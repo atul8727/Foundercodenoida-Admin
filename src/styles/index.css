@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* No colors here: every color comes from src/styles/theme.js */
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-page font-sans text-ink antialiased;
+  }
+
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-primary;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-line bg-surface shadow-card;
+  }
+
+  .muted {
+    @apply text-muted;
+  }
+
+  .input {
+    @apply min-h-[42px] w-full rounded-md border border-line-strong bg-surface px-3.5 py-2.5 text-sm text-ink transition;
+  }
+  .input::placeholder {
+    @apply text-muted;
+  }
+  .input:focus {
+    @apply border-primary outline-none ring-2 ring-primary/25;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
