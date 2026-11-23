@@ -35,25 +35,54 @@ export const MODULES = [
   },
 
   // ---- placeholders: one per Postman folder, replaced one by one when its API is shared ----
-  // { key: "enquiries", label: "Enquiries", path: "/enquiries", icon: Inbox, group: "Enquiries", description: "Enquiries from the website form.", items: ["List, search and filter", "Delete enquiry"] },
-  // { key: "jobRequests", label: "Job Requests", path: "/job-requests", icon: FileText, group: "Enquiries", description: "Job applications from the website.", items: ["List and search", "Download resume", "Delete request"] },
-  // { key: "schoolInquiries", label: "School Inquiries", path: "/school-inquiries", icon: GraduationCap, group: "Enquiries", description: "Inquiries from schools.", items: ["List and search", "Delete inquiry"] },
-  // { key: "pgDemoRequests", label: "PG Demo Requests", path: "/pg-demo-requests", icon: MonitorPlay, group: "Enquiries", description: "PG demo requests.", items: ["List and search", "Delete request"] },
-  // { key: "blogs", label: "Blogs", path: "/blogs", icon: Newspaper, group: "Website Content", description: "Manage blog posts.", items: ["List, create, update, delete"] },
-  // { key: "categories", label: "Categories", path: "/categories", icon: Tags, group: "Website Content", description: "Manage blog categories.", items: ["List, create, delete"] },
-  // { key: "careerJobs", label: "Career Jobs", path: "/career-jobs", icon: Briefcase, group: "Website Content", description: "Manage job openings.", items: ["List, create, update, delete"] },
-  // { key: "employees", label: "Employees", path: "/employees", icon: Users, group: "Website Content", description: "Manage employees.", items: ["List, create, delete"] },
-
   {
-    key: "uiKit",
-    label: "UI Kit",
-    path: "/ui-kit",
-    icon: Palette,
-    group: "Developer",
-    description: "Every reusable component in one place (development only).",
-    devOnly: true,
-    page: lazy(() => import("@/pages/modules/UiKitPage")),
+    key: "enquiries", label: "Enquiries", path: "/enquiries", icon: Inbox, group: "Enquiries", description: "Enquiries from the website form.",
+    page: lazy(() => import("@/pages/modules/EnquiriesPage")),
   },
+  {
+    key: "jobRequests", label: "Job Requests", path: "/job-requests", icon: FileText, group: "Enquiries", description: "Job applications from the website.",
+    page: lazy(() => import("@/pages/modules/JobRequestsPage")),
+  },
+  {
+    key: "schoolInquiries", label: "School Inquiries", path: "/school-inquiries", icon: GraduationCap, group: "Enquiries", description: "Inquiries from schools.",
+    page: lazy(() => import("@/pages/modules/SchoolInquiriesPage")),
+  },
+  {
+    key: "pgDemoRequests", label: "PG Demo Requests", path: "/pg-demo-requests", icon: MonitorPlay, group: "Enquiries", description: "PG demo requests.",
+    page: lazy(() => import("@/pages/modules/PgDemoRequestsPage")),
+  },
+  {
+    key: "blogs", label: "Blogs", path: "/blogs", icon: Newspaper, group: "Website Content", description: "Manage blog posts.",
+    page: lazy(() => import("@/pages/modules/BlogsPage")),
+  },
+  {
+    key: "categories",
+    label: "Categories",
+    path: "/categories",
+    icon: Tags,
+    group: "Website Content",
+    description: "Manage blog categories.",
+    page: lazy(() => import("@/pages/modules/CategoriesPage")),
+  },
+  {
+    key: "careerJobs", label: "Career Jobs", path: "/career-jobs", icon: Briefcase, group: "Website Content", description: "Manage job openings.",
+    page: lazy(() => import("@/pages/modules/CareerJobsPage")),
+  },
+  {
+    key: "employees", label: "Employees", path: "/employees", icon: Users, group: "Website Content", description: "Manage employees.",
+    page: lazy(() => import("@/pages/modules/EmployeesPage")),
+  },
+
+  // {
+  //   key: "uiKit",
+  //   label: "UI Kit",
+  //   path: "/ui-kit",
+  //   icon: Palette,
+  //   group: "Developer",
+  //   description: "Every reusable component in one place (development only).",
+  //   devOnly: true,
+  //   page: lazy(() => import("@/pages/modules/UiKitPage")),
+  // },
 ];
 
 export const isModuleVisible = (m) => !m.devOnly || import.meta.env.DEV;

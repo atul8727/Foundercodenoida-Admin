@@ -11,27 +11,27 @@
 export const THEME = {
   light: {
     colors: {
-      page: "#F4F7FB", // app background
-      surface: "#FFFFFF", // cards, sidebar, topbar, tables
-      "surface-2": "#EEF2F7", // table head, hover, subtle fills
-      line: "#E1E8F0", // borders
-      "line-strong": "#C5D2E0", // input borders
-      ink: "#0F1F33", // main text
-      muted: "#5B6B7F", // secondary text
+      page: "#90E0EF", // app background (brand sky blue)
+      surface: "#FFFFFF", // cards, sidebar, topbar, tables, inputs
+      "surface-2": "#E0F6FA", // table head, hover, subtle fills
+      line: "#A9DCE8", // borders
+      "line-strong": "#4F9DB3", // input borders
+      ink: "#0B2239", // main text
+      muted: "#3D5266", // secondary text
       primary: "#14548F",
       "primary-hover": "#1F6FB5",
-      "primary-soft": "#E4EEF8",
+      "primary-soft": "#D3F1F8",
       "on-solid": "#FFFFFF", // text on solid primary / success / danger fills
       danger: "#E03C3C",
       success: "#2BAE47",
-      warning: "#F59E0B",
+      warning: "#B45F06", // darker amber so badge text is readable on white
       info: "#7C5CE0",
       neutral: "#7A8798",
       "logo-bg": "#FFFFFF", // the logo has blue text: dark mode puts it on this card
     },
     shadows: {
-      card: "0 1px 3px rgba(15, 31, 51, 0.06), 0 8px 22px rgba(15, 31, 51, 0.06)",
-      pop: "0 12px 32px rgba(15, 31, 51, 0.16)",
+      card: "0 1px 3px rgba(11, 34, 57, 0.08), 0 8px 22px rgba(11, 34, 57, 0.08)",
+      pop: "0 12px 32px rgba(11, 34, 57, 0.2)",
     },
   },
   dark: {
