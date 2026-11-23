@@ -1,27 +1,20 @@
-import { CheckCircle2, Inbox, Loader, Sparkles } from "lucide-react";
+import { BriefcaseBusiness, FileText, Inbox, MonitorPlay, Users } from "lucide-react";
 import PageHeader from "@/components/ui/PageHeader";
-import StatCard from "@/components/ui/StatCard";
 import Card from "@/components/ui/Card";
-import EmptyState from "@/components/ui/EmptyState";
-import { useAuth } from "@/features/auth/useAuth";
+import StatCard from "@/components/ui/StatCard";
+import ErrorState from "@/components/ui/ErrorState";
+import { useFetch } from "@/hooks/useFetch";
+import { dashboardService } from "@/features/dashboard/dashboard.service";
 
-// Placeholder: the numbers will come from the "Dashboard Stats" API when it is connected.
 export default function DashboardPage() {
-  const { user } = useAuth();
-  return (
-    <>
-      <PageHeader title="Dashboard" description={`Welcome back, ${user?.name || "Admin"}.`} />
+  const { data: stats, loading, error, refetch } = useFetch(dashboardService.getStats);
+  const cards = [
+    { key: "employees", label: "Employees", icon: Users, to: "/employees" },
+    { key: "blogs", label: "Blogs", icon: FileText, to: "/blogs" },
+    { key: "enquiries", label: "Enquiries", icon: Inbox, to: "/enquiries" },
+    { key: "careerJobs", label: "Career jobs", icon: BriefcaseBusiness, to: "/career-jobs" },
+    { key: "jobRequests", label: "Job requests", icon: MonitorPlay, to: "/job-requests" },
+  ];
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Total Enquiries" icon={Inbox} subtext="Waiting for API" />
-        <StatCard label="New" icon={Sparkles} subtext="Waiting for API" />
-        <StatCard label="In Progress" icon={Loader} subtext="Waiting for API" />
-        <StatCard label="Converted" icon={CheckCircle2} subtext="Waiting for API" />
-      </div>
-
-      <Card className="mt-6">
-        <EmptyState title="Dashboard data is not connected yet" text="Charts and recent enquiries appear here once the Dashboard Stats API is added." />
-      </Card>
-    </>
-  );
+  return <><PageHeader title="Dashboard" description="Live overview from your admin data." />{error ? <Card><ErrorState message={error} onRetry={refetch} /></Card> : <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">{cards.map((card) => <StatCard key={card.key} {...card} value={stats?.[card.key] ?? 0} loading={loading} />)}</div>}</>;
 }
