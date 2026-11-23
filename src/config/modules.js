@@ -73,16 +73,16 @@ export const MODULES = [
     page: lazy(() => import("@/pages/modules/EmployeesPage")),
   },
 
-  {
-    key: "uiKit",
-    label: "UI Kit",
-    path: "/ui-kit",
-    icon: Palette,
-    group: "Developer",
-    description: "Every reusable component in one place (development only).",
-    devOnly: true,
-    page: lazy(() => import("@/pages/modules/UiKitPage")),
-  },
+  // {
+  //   key: "uiKit",
+  //   label: "UI Kit",
+  //   path: "/ui-kit",
+  //   icon: Palette,
+  //   group: "Developer",
+  //   description: "Every reusable component in one place (development only).",
+  //   devOnly: true,
+  //   page: lazy(() => import("@/pages/modules/UiKitPage")),
+  // },
 ];
 
 export const isModuleVisible = (m) => !m.devOnly || import.meta.env.DEV;
